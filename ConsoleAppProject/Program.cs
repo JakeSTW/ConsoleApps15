@@ -26,6 +26,8 @@ namespace ConsoleAppProject
             Console.WriteLine(" =================================================");
             Console.WriteLine();
 
+            Console.ForegroundColor = ConsoleColor.White;
+
             DistanceConverter converter = new DistanceConverter();
             converter.Run();
         }
