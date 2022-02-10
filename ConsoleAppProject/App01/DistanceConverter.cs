@@ -6,9 +6,10 @@ namespace ConsoleAppProject.App01
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Derek version 0.1
+    /// Jake version 0.1
     /// </author>
-    public class DistanceConverter
+    public class DistanceConverter 
+    
     {
         public const int FEET_IN_MILES = 5280;
 
@@ -37,7 +38,7 @@ namespace ConsoleAppProject.App01
             Console.WriteLine();
             Console.WriteLine(" ========================");
             Console.WriteLine("    Distance Converter   ");
-            Console.WriteLine("        by Derek         ");
+            Console.WriteLine("        by Jake Stewart         ");
             Console.WriteLine(" ========================");
             Console.WriteLine();
         }
@@ -52,6 +53,10 @@ namespace ConsoleAppProject.App01
             feet = miles * FEET_IN_MILES;
         }
 
+        /// <summary>
+        /// Prompt the user to enter the distance in miles
+        /// Input the miles as a double number
+        /// </summary>
         private void InputMiles()
         {
             Console.Write(" Please input the distance in miles > ");
