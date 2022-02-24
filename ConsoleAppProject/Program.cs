@@ -3,6 +3,7 @@ using ConsoleAppProject.App03;
 using ConsoleAppProject.Helpers;
 using System;
 
+
 namespace ConsoleAppProject
 {
     /// <summary>
@@ -29,7 +30,8 @@ namespace ConsoleAppProject
             Console.ForegroundColor = ConsoleColor.White;
 
             DistanceConverter converter = new DistanceConverter();
-            converter.Run();
+
+            converter.ConvertDistance();
         }
     }
 }

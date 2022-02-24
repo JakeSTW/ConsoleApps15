@@ -18,45 +18,101 @@ namespace ConsoleAppProject.App01
 
         private const double FEET_IN_METRES = 3.28084;
 
+  
+        private object fromUnit;
+        private object toUnit;
         private double FromDistance;
         private double ToDistance;
-
         public const string FEET = "Feet";
         public const string METRES = "Metres";
         public const string MILES = "Miles";
 
-        public DistanceConverter()
-        {
-            fromUnit = MILES;
-            toUnit = FEET;
-        }
+        public object MilestoFeet { get; internal set; }
+            public DistanceConverter()
+            {
+                fromUnit = MILES;
+                toUnit = FEET;
+            }
 
-        /// <summary>
-        /// This method will output a heading, ask dfor the
-        /// input for miles, calculate and output the same
-        /// distance in feet.
-        /// </summary>
-        public void ConvertDistance()
-        {
-            fromUnit = SelectUnit("Please select the from distance unit >")
-            ToUnit = SelectUnit("Please select the to distance unit >")
-            
-            OutputHeading($"Converting {fromUnit} to {toUnit} ");
-            
-            FromDistance = InputDistance
-                ($"Please enter the number of {fromUnit}>");
+            /// <summary>
+            /// This method will output a heading, ask dfor the
+            /// input for miles, calculate and output the same
+            /// distance in feet.
+            /// </summary>
+            public void ConvertDistance()
+            {
+                OutputHeading();
 
-            //CalculateFeet();
-
-            OutputDistance(fromDistance, fromUnit, toDistance, toUnit);
-        }
+                fromUnit = SelectUnit("Please select the from distance unit >");
+                toUnit = SelectUnit("Please select the to distance unit >");
 
 
-        private void CalculateMiles()
-        {
-            throw new NotImplementedException();
+                Console.WriteLine($"Converting {fromUnit} to {toUnit} ");
 
-            private void CalculateMetres()
+                FromDistance = InputDistance
+                    ($"Please enter the number of {fromUnit}>");
+
+                CaculateDistance();
+
+                OutputDistance();
+            }
+
+            private void CaculateDistance()
+            {
+                if (fromUnit == MILES && toUnit == FEET)
+                {
+                    ToDistance = FromDistance * FEET_IN_MILES;
+                }
+                else if (fromUnit == FEET && toUnit == MILES)
+                {
+                    ToDistance = FromDistance / FEET_IN_MILES;
+                }
+            }
+
+
+
+            private object SelectUnit(string prompt)
+            {
+                string choice = DisplayChoices(prompt);
+
+                string unit = ExecuteChoice(choice);
+                Console.WriteLine($"You have chosen {unit}");
+                return unit;
+
+            }
+
+            private static string ExecuteChoice(string choice)
+            {
+                if (choice.Equals("1"))
+                {
+                    return FEET;
+                }
+                else if (choice == "2")
+                {
+                    return METRES;
+                }
+                else if (choice.Equals("3"))
+                {
+                    return MILES;
+                }
+                return null;
+            }
+
+            private static string DisplayChoices(string prompt)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"1. {FEET}");
+                Console.WriteLine($"2. {METRES}");
+                Console.WriteLine($"3. {MILES}");
+                Console.WriteLine();
+
+                Console.Write(prompt);
+                string choice = Console.ReadLine();
+                return choice;
+            }
+
+
+            private void OutputHeading(string v)
             {
                 throw new NotImplementedException();
             }
@@ -65,15 +121,15 @@ namespace ConsoleAppProject.App01
 
             private void OutputDistance()
             {
-                Console.WriteLine($" {fromDistance} {fromUnit} is " +
-                    $"{toDistance} {toUnit}!");
+                Console.WriteLine($" {FromDistance} {fromUnit} is " +
+                    $"{ToDistance} {toUnit}!");
             }
 
             /// <summary>
             /// Prompt the user to enter the distance in miles
             /// Input the miles as a double number
             /// </summary>
-            private void InputDistance(string prompt)
+            private double InputDistance(string prompt)
             {
                 Console.Write(prompt);
                 string value = Console.ReadLine();
@@ -81,21 +137,20 @@ namespace ConsoleAppProject.App01
             }
 
 
-            private static void OutputHeading(string prompt)
+            private static void OutputHeading()
             {
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.WriteLine();
                 Console.WriteLine(" ========================");
                 Console.WriteLine("    Distance Converter   ");
-                Console.WriteLine("        by Jake Stewart         ");
+                Console.WriteLine("        by Jake Stewart  ");
                 Console.WriteLine(" ========================");
 
-                Console.WriteLine(prompt);
-                Console.WriteLine();
+
 
             }
         }
 
     }
-}
+
