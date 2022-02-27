@@ -57,17 +57,23 @@ namespace ConsoleAppProject.App01
                 OutputDistance();
             }
 
-            private void CaculateDistance()
+        private void CaculateDistance()
+        {
+            if (fromUnit == MILES && toUnit == FEET)
             {
-                if (fromUnit == MILES && toUnit == FEET)
-                {
-                    ToDistance = FromDistance * FEET_IN_MILES;
-                }
-                else if (fromUnit == FEET && toUnit == MILES)
-                {
-                    ToDistance = FromDistance / FEET_IN_MILES;
-                }
+                ToDistance = FromDistance * FEET_IN_MILES;
             }
+           
+            else if (fromUnit == FEET && toUnit == MILES)
+            {
+                ToDistance = FromDistance / FEET_IN_MILES;
+            }
+           
+            else if (fromUnit == METRES && toUnit == MILES);
+            {
+                ToDistance = FromDistance / METRES_IN_MILES;
+            }
+           }
 
 
 
