@@ -7,10 +7,12 @@ namespace ConsoleAppProject.App02
     /// <author>
     /// Student Name version 0.1
     /// Jake Stewart
-    class Program
+
+   public class BmiCalculator
     {
-        private static void Main(string[] args)
-        {
+        public int BMI { get; private set; }
+
+        public void OutputHeading(){
             Console.Write("Enter your weight(kg): ");
             double kg = Convert.ToDouble(Console.ReadLine());
             Console.Write("Enter your height (m): ");
@@ -19,7 +21,9 @@ namespace ConsoleAppProject.App02
             double BMI = kg / (height * height);
             Console.WriteLine("Your BMI is : " + Math.Round(BMI, 2));
             Console.ReadKey();
-
+        }
+        public void CaculateBMI()
+        {
             if (BMI < 16)
                 Console.WriteLine("You're serverley underweight");
             else if (BMI <= 18.5)
@@ -31,9 +35,10 @@ namespace ConsoleAppProject.App02
             else if (BMI <= 35)
                 Console.WriteLine("You're moderately overweight");
             else if (BMI >= 40)
-                    Console.WriteLine("You're Obese");
+                Console.WriteLine("You're Obese");
+        }
 
 
         }
     }
-}
+
