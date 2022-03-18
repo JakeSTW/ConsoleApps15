@@ -31,13 +31,37 @@ namespace ConsoleAppProject
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.White;
+            string[] choices =
+            {
+                "App01 Distance Converter",
+                "App02 BMI Calculator",
+                "App03 Student Grades "
+            };
 
+            Console.WriteLine(" Please Choose your App");
 
-            DistanceConverter converter = new DistanceConverter();
+            int choice = ConsoleHelper.SelectChoice(choices);
 
-            converter.ConvertDistance();
+            switch (choice)
+            {
+                case 1: DistanceConverter app01 = new DistanceConverter();
+                    app01.Run();
+                    break;
 
-            BmiCalculator = new BmiCalculator();
+                    case 2:
+                    new BmiCalculator().Run();
+                    break;
+
+                    case 3: StudentGrades app03 = new StudentGrades();
+                    app03.Run();
+                    break;
+            }
+
+            
+
+            BmiCalculator app02 = new BmiCalculator();
+
+            
 
 
 
